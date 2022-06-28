@@ -31,6 +31,7 @@ public abstract class BaseFramework {
 	private static final String DRIVER_FIREFOX = "firefox";
 	private static final String DRIVER_CHROME = "chrome";
 	private static final String DRIVER_EDGE = "edge";
+	private static final String DRIVER_SAFARI = "safari";
 	private static Properties configuration;
 
 	@Rule
@@ -57,6 +58,7 @@ public abstract class BaseFramework {
 			driver = new ChromeDriver(capabilities);
 		} else if (DRIVER_FIREFOX.equalsIgnoreCase(configuration.getProperty("BROWSER"))) {
 			capabilities = DesiredCapabilities.firefox();
+			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver(capabilities);
 		} else if (DRIVER_EDGE.equalsIgnoreCase(configuration.getProperty("BROWSER"))) {
 			capabilities = DesiredCapabilities.edge();
